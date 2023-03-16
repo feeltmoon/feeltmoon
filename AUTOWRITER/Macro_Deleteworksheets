@@ -1,0 +1,16 @@
+function main(workbook: ExcelScript.Workbook,
+  SheetsToDelete: Array<string> = [],
+)
+{
+//for each of the worksheets in the array
+  for (let worksheet of SheetsToDelete) {
+    //delete the worksheet
+    workbook.getWorksheet(worksheet).delete();
+  }
+//get current worksheets in workbook
+  let sheets = workbook.getWorksheets();
+  let names = sheets.map((sheet) => sheet.getName());
+  
+  //return the number of sheets left
+  return(names.length)
+}
